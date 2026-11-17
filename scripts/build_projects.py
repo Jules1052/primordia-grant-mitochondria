@@ -41,17 +41,20 @@ def fig(n, src, alt, cap):
             f'  </figure>')
 
 
-def gallery(folder, caption):
+def gallery(folder, caption, alts=None):
     """A square grid of lab photographs from assets/img/<folder>/, four per row.
 
     Renders nothing while the folder is empty, so dropping files in and
-    rebuilding is all that is needed."""
+    rebuilding is all that is needed. `alts` maps a filename to its alt text;
+    files without an entry get a generic one."""
     d = ROOT / "assets" / "img" / folder
     shots = sorted(q.name for q in d.glob("*") if q.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"})
     if not shots:
         return ""
+    alts = alts or {}
     tiles = "\n".join(
-        f'    <figure><img src="../../assets/img/{folder}/{n}" alt="Lab photograph from the transfer runs." loading="lazy"></figure>'
+        f'    <figure><img src="../../assets/img/{folder}/{n}" '
+        f'alt="{alts.get(n, "Lab photograph from the transfer runs.")}" loading="lazy"></figure>'
         for n in shots)
     return (f'  <div class="gallery">\n{tiles}\n  </div>\n'
             f'  <p class="gallery-cap">{caption}</p>')
@@ -103,8 +106,8 @@ page("neutrophil_transfer",
          ul(["The neutrophils were too fragile.",
              'Mitochondrial uptake is genetically limited. This came out of the '
              '<a href="../secondary_transfer/">secondary transfer analysis</a> running in parallel.',
-             "Another team is doing this with finer technology, transferring mitochondria into whole blood without "
-             "separating them first."]),
+             'Another team is doing this with <a href="https://portal.bio/">Portal</a>, and is successfully '
+             "transferring mitochondria into whole blood without separating them first."]),
 
          h("From the bench"),
          gallery("neutrophil_gallery",
@@ -192,11 +195,26 @@ page("healthy_vs_irradiated",
   </div>""",
 
          h("Status and open points"),
-         ul(["Cells counted and plated. No results recorded yet; the flow cytometry analysis is still to come.",
+         ul(["Cells counted and plated. No results recorded yet; the confocal microscopy and the flow cytometry "
+             "are still to run.",
              "Culture media and mouse strain were not written down at the time.",
              "Viability in both PBMC arms is in the sixties, so a weak effect may not separate from the noise.",
              'Builds on the <a href="../neutrophil_transfer/">neutrophil transfer work</a>, where the preparation '
              "rather than the cell type turned out to be the limiting factor."]),
+
+         h("From the bench"),
+         gallery("irradiated_gallery",
+                 "Planning sketch, counting sheet, preparation in the hood, centrifuge settings and the bench "
+                 "from the healthy against irradiated run.",
+                 {"01_protocol_sketch.jpg": "Handwritten planning sketch of the PBMC transfer groups and readouts.",
+                  "02_count_sheet.jpg": "Handwritten sheet of cell densities and viabilities beside the cell counter.",
+                  "03_syringe_filter.jpg": "Gloved hands fitting a syringe filter over a rack of open tubes in the hood.",
+                  "04_aliquots.jpg": "Gloved hand working over an orange rack of open microtubes in the hood.",
+                  "05_hood_plan.jpg": "Biosafety hood with the conjugation plan written on the back panel.",
+                  "06_hood_setup.jpg": "Biosafety hood laid out with pipettes, tip boxes and tube racks.",
+                  "07_centrifuge.jpg": "Centrifuge display showing the speed and time settings for a spin.",
+                  "08_tube_rack.jpg": "Labelled tubes and microtube caps in an orange rack in the hood.",
+                  "09_bench.jpg": "Lab bench with racks, pipettes and reagent boxes during the run."}),
      ]))
 
 # ============================================================== 02
@@ -274,17 +292,22 @@ page("chlorella",
          h("Design"),
          ol(["Culture the algae and concentrate the cells.",
              "Isolate mitochondria.",
-             "Add to mammalian recipient cells.",
-             "Score against three outcomes: no uptake, transient uptake, functional tolerance."]),
-         fig(1, "f1_design", "Three step pilot design with three distinguishable outcomes.",
-             "Pilot design. The three outcomes are separable, so a negative result is still a result."),
+             "Add to mammalian recipient cells."]),
+         fig(1, "f1_design", "Three step pilot design: Chlorella culture, mitochondrial isolation, addition to mammalian cells.",
+             "Pilot design, schematic."),
+         ul(["Uptake is only the first question.",
+             "Even if the mitochondria are integrated, the question is whether they work in a mammalian cell, and "
+             "whether they have any beneficial effect at all."]),
          photo(2, "chlorella_culture.jpg",
                "A gloved hand holding a conical tube of dense green algal culture.",
                "Algal culture concentrated ahead of isolation."),
          photo(3, "plant_material.jpg",
                "A potato tuber held next to a sealed bag of 50 ml bio-reaction tubes containing green material.",
                "Plant material and 50 ml reaction tubes on the way to the lab. Potato tuber is the starting material "
-               "in the published protocol the procedure was taken from."),
+               "in the published protocol the procedure was taken from, and the original plan was to try potato "
+               "mitochondria as well."
+               '<span class="note">one potato, one bag of green tubes, one straight face. '
+               "A very funny bus ride.</span>"),
 
          h("Isolation procedure"),
          ul(["Adapted from the published method for isolating mitochondria from potato tubers "
@@ -305,7 +328,7 @@ page("chlorella",
              "This is the expected failure mode: without a density step, chloroplasts and other organelles of similar "
              "sedimentation behaviour are not separated out.",
              "The algal cell wall is also hard to break gently, which limits what the first spin can recover.",
-             "No transfer into mammalian cells was reached, so the three outcomes above remain untested."]),
+             "No transfer into mammalian cells was reached, so uptake and function both remain untested."]),
 
          h("Next attempt"),
          ul(["Add a density gradient. Ficoll is the candidate, in place of or alongside Percoll. It is the step the "
@@ -322,11 +345,20 @@ page("chlorella",
              "assembled from the plant and thick-walled algae literature."]),
 
          h("Prior expectation"),
-         ul(["Most likely no uptake.",
-             "Otherwise transient uptake followed by clearance, on the grounds that these mitochondria are not "
-             "efficient in a mammalian cell.",
+         ul(["The likeliest result is that nothing happens: the mitochondria are not taken up, or are taken up and "
+             "cleared, on the grounds that an algal organelle is not efficient in a mammalian cell.",
              "A functional effect would open the broader question of cross-species compatibility and the limits of "
              "mitochondrial transplantation."]),
+
+         h("From the bench"),
+         gallery("chlorella_gallery",
+                 "Hood setup, homogenisation of the algal culture on ice, handling and counting.",
+                 {"01_hood_setup.jpg": "Biosafety hood with green algal culture in conical tubes, PBS bottles and tube racks.",
+                  "02_homogeniser.jpg": "Gloved hands working a glass homogeniser over a tube on ice, beside tubes of green culture.",
+                  "03_green_homogenate.jpg": "Gloved hand holding the glass homogeniser and a tube of green homogenate over ice.",
+                  "04_pipetting.jpg": "Pipetting into a microtube in the hood, with PBS bottles and a tip box behind.",
+                  "05_cell_counter.jpg": "Automated fluorescence cell counter next to its laptop, with a pipette and microtube on the bench.",
+                  "06_hood_notes.jpg": "Biosafety hood with handwritten volumes on the back panel and pipettes on the rail."}),
      ]),
      [("Protocol and supporting material", DRIVE),
       ("Source protocol: Isolation of Mitochondria from Potato Tubers", "https://bio-protocol.org/e1226"),

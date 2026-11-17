@@ -55,14 +55,14 @@ fig("neutrophil_transfer", "f1_workflow",
 
 fig("neutrophil_transfer", "f3_routes",
     "Two routes for delivering mitochondria",
-    "The isolated route used in this project compared with the in-blood route used by the PORTER team.",
+    "The isolated route used in this project compared with the in-blood route used by the Portal team.",
     W, 300,
     f'<text class="t" x="12" y="24">A &#160; Isolated mitochondria (this project)</text>'
     + chain([("Whole blood", None), ("Isolate", "mitochondria removed from cells"),
              ("Add to granulocytes", None), ("Low uptake", "activity lost")], 12, 38, 170, 76, 20, width=17)
-    + f'<text class="t" x="12" y="176">B &#160; Mitochondria kept in blood (PORTER)</text>'
+    + f'<text class="t" x="12" y="176">B &#160; Mitochondria kept in blood (Portal)</text>'
     + chain([("Whole blood", None), ("Stabilise in place", "no isolation step"),
-             ("Transfer in blood", "PORTER machine"), ("Uptake retained", "activity preserved")],
+             ("Transfer in blood", "Portal platform"), ("Uptake retained", "activity preserved")],
             12, 190, 170, 76, 20, width=17)
     + f'<text class="xs" x="12" y="290">Difference: route B never exposes mitochondria to an isolation buffer.</text>')
 
@@ -223,17 +223,13 @@ fig("leukemia", "f3_genesets",
 
 # ---------------------------------------------------------------- project 05, Chlorella
 fig("chlorella", "f1_design",
-    "Cross species pilot design and the outcomes it distinguishes",
-    "Mitochondria isolated from Chlorella are added to mammalian cells; three outcomes are distinguishable.",
-    W, 320,
-    chain([("Chlorella culture", None), ("Isolate mitochondria", None),
-           ("Add to mammalian cells", None)], 12, 26, 200, 80, 34, width=18)
-    + f'<path class="arr" d="M 346,106 L 346,140"/>'
-    + box(12, 152, 232, 92, "No uptake", "boxw", sub="recognised and excluded")
-    + box(264, 152, 232, 92, "Transient uptake", "box", sub="taken up, then cleared")
-    + box(516, 152, 232, 92, "Functional tolerance", "boxw", sub="retained and used")
-    + f'<text class="xs" x="12" y="276">Prior expectation: no uptake, or transient uptake followed by clearance on efficiency grounds.</text>'
-    + f'<text class="xs" x="12" y="296">A functional effect would raise the broader question of cross species compatibility limits.</text>')
+    "Cross species pilot design",
+    "Chlorella is cultured and concentrated, mitochondria are isolated from it, and those mitochondria are added to mammalian cells.",
+    W, 180,
+    chain([("Chlorella culture", "grown and concentrated"), ("Isolate mitochondria", "differential centrifugation"),
+           ("Add to mammalian cells", "co-incubation")], 12, 26, 230, 86, 29, width=18)
+    + f'<text class="xs" x="12" y="146">Schematic. Isolation is where the pilot stopped: step 3 was never reached.</text>'
+    + f'<text class="xs" x="12" y="166">Uptake would only be the first question; whether the mitochondria work in a mammalian cell is the second.</text>')
 
 _ch = ["Ethical assessment", "Environmental impact", "Market assessment", "Dose modeling proposal", "Case for IVF review"]
 _b = [box(12 + i * 151, 40, 139, 92, c, "box" if i < 3 else "boxw", width=14) for i, c in enumerate(_ch)]

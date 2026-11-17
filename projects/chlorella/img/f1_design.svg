@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" role="img" aria-labelledby="ti de">
-  <title id="ti">Cross species pilot design and the outcomes it distinguishes</title>
-  <desc id="de">Mitochondria isolated from Chlorella are added to mammalian cells; three outcomes are distinguishable.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="ti de">
+  <title id="ti">Cross species pilot design</title>
+  <desc id="de">Chlorella is cultured and concentrated, mitochondria are isolated from it, and those mitochondria are added to mammalian cells.</desc>
   <style>
     text { font-family: "Jost","Avenir Next","Futura","Century Gothic",system-ui,sans-serif; fill: #24233a; }
     .t  { font-size: 15px; font-weight: 600; fill: #16152b; }
@@ -19,22 +19,18 @@
       <path d="M0,0 L10,5 L0,10 Z" fill="#3a3fb8"/>
     </marker>
   </defs>
-<rect class="box" x="12" y="26" width="200" height="80" rx="12"/>
-<text class="s" x="112.0" y="66.0" text-anchor="middle" dominant-baseline="middle">Chlorella culture</text>
-<rect class="box" x="246" y="26" width="200" height="80" rx="12"/>
-<text class="s" x="346.0" y="58.5" text-anchor="middle" dominant-baseline="middle">Isolate</text>
-<text class="s" x="346.0" y="73.5" text-anchor="middle" dominant-baseline="middle">mitochondria</text>
-<path class="arr" d="M 214,66.0 L 240,66.0"/>
-<rect class="box" x="480" y="26" width="200" height="80" rx="12"/>
-<text class="s" x="580.0" y="58.5" text-anchor="middle" dominant-baseline="middle">Add to mammalian</text>
-<text class="s" x="580.0" y="73.5" text-anchor="middle" dominant-baseline="middle">cells</text>
-<path class="arr" d="M 448,66.0 L 474,66.0"/><path class="arr" d="M 346,106 L 346,140"/><rect class="boxw" x="12" y="152" width="232" height="92" rx="12"/>
-<text class="s" x="128.0" y="192.0" text-anchor="middle" dominant-baseline="middle">No uptake</text>
-<text class="xs" x="128.0" y="221.5" text-anchor="middle" dominant-baseline="middle">recognised and</text>
-<text class="xs" x="128.0" y="234.5" text-anchor="middle" dominant-baseline="middle">excluded</text><rect class="box" x="264" y="152" width="232" height="92" rx="12"/>
-<text class="s" x="380.0" y="192.0" text-anchor="middle" dominant-baseline="middle">Transient uptake</text>
-<text class="xs" x="380.0" y="228.0" text-anchor="middle" dominant-baseline="middle">taken up, then cleared</text><rect class="boxw" x="516" y="152" width="232" height="92" rx="12"/>
-<text class="s" x="632.0" y="184.5" text-anchor="middle" dominant-baseline="middle">Functional</text>
-<text class="s" x="632.0" y="199.5" text-anchor="middle" dominant-baseline="middle">tolerance</text>
-<text class="xs" x="632.0" y="228.0" text-anchor="middle" dominant-baseline="middle">retained and used</text><text class="xs" x="12" y="276">Prior expectation: no uptake, or transient uptake followed by clearance on efficiency grounds.</text><text class="xs" x="12" y="296">A functional effect would raise the broader question of cross species compatibility limits.</text>
+<rect class="box" x="12" y="26" width="230" height="86" rx="12"/>
+<text class="s" x="127.0" y="63.0" text-anchor="middle" dominant-baseline="middle">Chlorella culture</text>
+<text class="xs" x="127.0" y="96.0" text-anchor="middle" dominant-baseline="middle">grown and concentrated</text>
+<rect class="box" x="271" y="26" width="230" height="86" rx="12"/>
+<text class="s" x="386.0" y="55.5" text-anchor="middle" dominant-baseline="middle">Isolate</text>
+<text class="s" x="386.0" y="70.5" text-anchor="middle" dominant-baseline="middle">mitochondria</text>
+<text class="xs" x="386.0" y="89.5" text-anchor="middle" dominant-baseline="middle">differential</text>
+<text class="xs" x="386.0" y="102.5" text-anchor="middle" dominant-baseline="middle">centrifugation</text>
+<path class="arr" d="M 244,69.0 L 265,69.0"/>
+<rect class="box" x="530" y="26" width="230" height="86" rx="12"/>
+<text class="s" x="645.0" y="55.5" text-anchor="middle" dominant-baseline="middle">Add to mammalian</text>
+<text class="s" x="645.0" y="70.5" text-anchor="middle" dominant-baseline="middle">cells</text>
+<text class="xs" x="645.0" y="96.0" text-anchor="middle" dominant-baseline="middle">co-incubation</text>
+<path class="arr" d="M 503,69.0 L 524,69.0"/><text class="xs" x="12" y="146">Schematic. Isolation is where the pilot stopped: step 3 was never reached.</text><text class="xs" x="12" y="166">Uptake would only be the first question; whether the mitochondria work in a mammalian cell is the second.</text>
 </svg>
